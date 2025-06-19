@@ -16,6 +16,7 @@ import jakarta.persistence.PrePersist;
 import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Pattern;
 import lombok.Getter;
 import lombok.Setter;
 import vn.buivandat.TestApiDTS.util.SecurityUtil;
@@ -37,6 +38,7 @@ public class User {
     private String email;
     @NotBlank(message = "Password không được để trống")
     private String password;
+    @Pattern(regexp = "^(\\+84|0)\\d{9,10}$", message = "Số điện thoại không hợp lệ")
     private String phone;
     private String avatar;
     @Column(nullable = false)

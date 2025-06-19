@@ -1,9 +1,11 @@
 package vn.buivandat.TestApiDTS.Service;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import vn.buivandat.TestApiDTS.domain.Role;
 import vn.buivandat.TestApiDTS.domain.User;
@@ -17,10 +19,12 @@ import vn.buivandat.TestApiDTS.util.error.IdInvalidException;
 public class UserService {
     private final UserRepository userRepository;
     private final RoleService roleService;
+    private final AvatarService avatarService;
 
-    public UserService(UserRepository userRepository, RoleService roleService) {
+    public UserService(UserRepository userRepository, RoleService roleService, AvatarService avatarService) {
         this.userRepository = userRepository;
         this.roleService = roleService;
+        this.avatarService = avatarService;
     }
 
     public User create(User user) {
@@ -146,4 +150,16 @@ public class UserService {
         return res;
     }
 
+   public String uploadAvatar(Long userId, MultipartFile file) throws IOException {
+    User user = userRepository.findByIdAndDeletedFalse(userId)
+        .orElseThrow(() -> new RuntimeException("User not found or deleted"));
+    // Xóa avatar cũ nếu có
+    avatarService.deleteAvatarFile(user.getAvatar());
+    
+    // Lưu file mới và lấy tên file (URL)
+    String url = avatarService.storeAvatar(userId, file);
+    user.setAvatar(url);
+    userRepository.save(user);
+    return url;
+}
 }

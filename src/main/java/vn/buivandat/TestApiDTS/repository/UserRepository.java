@@ -10,6 +10,7 @@ import vn.buivandat.TestApiDTS.domain.User;
 
 @Repository
 public interface UserRepository extends JpaRepository<User,Long>{
+    User findById(long id);
     
     boolean existsByEmail(String email);
 
@@ -20,7 +21,7 @@ public interface UserRepository extends JpaRepository<User,Long>{
     List<User> findByDeletedFalse();
 
     Optional<User> findByIdAndDeletedFalse(Long id);
-    
+
     Optional<User> findByUserNameAndDeletedFalse(String username); 
 
 }
