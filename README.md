@@ -57,3 +57,16 @@ admin@gmail.com
 
 Test các API qua postman:
 [https://postman/testapidto](https://lively-sunset-969196.postman.co/workspace/SpringBoot~eda77f3b-88ab-4807-b012-bb4cbb9cda25/collection/39471641-7cd8df0a-3fac-445b-aed0-eb7a53cffd2a?action=share&creator=39471641)  
+
+## Chạy dự án với Docker
+-Pull dự án và database.
+
+docker pull bvdat275/testapidts:latest
+docker pull bvdat275/mysql:8
+
+-Test các API qua postman:
+[https://postman/testapidto](https://lively-sunset-969196.postman.co/workspace/SpringBoot~eda77f3b-88ab-4807-b012-bb4cbb9cda25/collection/39471641-7cd8df0a-3fac-445b-aed0-eb7a53cffd2a?action=share&creator=39471641) 
+
+-Tài khoản admin full quyền.
+admin@gmail.com
+123456
