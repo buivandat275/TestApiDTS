@@ -47,6 +47,7 @@ Thay password tùy theo máy bạn.
 
 ## ▶️ Chạy dự án
 ./mvnw clean package -DskipTests
+
 ./mvnw spring-boot:run
 
 Nên để database trắng dữ liệu, khi chạy dự án lên sẽ tự tạo các bảng trong database đồng thời sẽ chạy vào file DatabaseInitializer.java để tự động tạo data mẫu. 
@@ -62,6 +63,7 @@ Test các API qua postman:
 -Pull dự án và database.
 
 docker pull bvdat275/testapidts:latest
+
 docker pull bvdat275/mysql:8
 
 -Test các API qua postman:
